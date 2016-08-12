@@ -56,7 +56,7 @@
         , title: 'Kjellerbandet'
         }
       , { start: 6840 // 4 * DAY + 18 * HOUR
-        , end: 7050   // 4 * DAY + 22 * HOUR
+        , end: 7080   // 4 * DAY + 22 * HOUR
         , title: 'Snaustrinda Spelemanslag'
         }
       ]
