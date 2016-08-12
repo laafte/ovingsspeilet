@@ -40,7 +40,7 @@
 
   win.jQuery(win.document).ready(() => {
     const GOOGLE_API_KEY = 'AIzaSyDvx6ilj_CXqxxtFSOGeUxAJso5hlRfa0s'
-    const TV1000_ID = '1knxNggh8F7XhEwNQrZZOtP3hJvZ8vSldbLfhWjjPfe4'
+    const TV1000_ID = '1Byw2CTdG-gnRI-V_QCYGlB4VpMDABsHH67im8GHS_AA'
     const FIXED =
       [ { start: 2580 // 1 * DAY + 19 * HOUR
         , end: 2760   // 1 * DAY + 22 * HOUR
