@@ -41,7 +41,6 @@
   win.jQuery(win.document).ready(() => {
     const GOOGLE_API_KEY = 'AIzaSyDvx6ilj_CXqxxtFSOGeUxAJso5hlRfa0s'
     const TV1000_ID = '1knxNggh8F7XhEwNQrZZOtP3hJvZ8vSldbLfhWjjPfe4'
-    const GCAL_ID = 'ga4v5nj5d16i78ommnp3tll8l0@group.calendar.google.com'
     const FIXED =
       [ { start: 2580 // 1 * DAY + 19 * HOUR
         , end: 2760   // 1 * DAY + 22 * HOUR
@@ -92,14 +91,21 @@
           , textColor: 'white'
           }
 
-          // GCal
-        , { googleCalendarId: GCAL_ID
+          // Interne datoer, Studentersamfundet i Trondhjem
+        , { googleCalendarId:
+            'ga4v5nj5d16i78ommnp3tll8l0@group.calendar.google.com'
           , googleCalendarApiKey: GOOGLE_API_KEY
           , etype: 'gcal'
           , backgroundColor: COLOR_BLUE
           , textColor: 'white'
           }
 
+          // Musikerlåfte kalender
+        , { googleCalendarId: 'musikerlaafte@gmail.com'
+          , googleCalendarApiKey: GOOGLE_API_KEY
+          , etype: 'gcal'
+          , backgroundColor: COLOR_GREEN
+          , textColor: 'white'
           }
 
           // Fixed events
