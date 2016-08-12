@@ -386,7 +386,7 @@
         events.push(
           { start: bdate.clone().hour(BARVAKT_EVENT_START).toDate()
           , end: bdate.clone().add(1, 'day').hour(BARVAKT_EVENT_END).toDate()
-          , title: title + '\n\nOppmøte 22:00'
+          , title: title + ' - Oppmøte 22:00'
           , header: title + ' ' + bdate.format('LL')
           , styrevakt: row[TV1000_COLUMN_BAR_STYREVAKT]
           , group: row[TV1000_COLUMN_BAR_GROUP]
