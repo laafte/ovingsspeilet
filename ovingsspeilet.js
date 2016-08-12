@@ -145,7 +145,7 @@
           , etype: 'fixed'
           }
         ]
-      , defaultView: 'agendaWeek'
+      , defaultView: 'month'
       , header:
         { left: 'create prev,next today'
         , center: 'title'
