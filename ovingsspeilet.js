@@ -70,6 +70,16 @@
     const BARVAKT_EVENT_START = 21 // 21 o'clock
     const BARVAKT_EVENT_END = 9 // 9 o'clock (next day)
 
+    const COLOR_GRAY = '#4D4D4D'
+    const COLOR_BLUE = '#5DA5DA'
+    const COLOR_ORANGE = '#FAA43A'
+    const COLOR_GREEN = '#60BD68'
+    // const COLOR_PINK = '#F17CB0'
+    // const COLOR_BROWN = '#B2912F'
+    // const COLOR_PURPLE = '#B276B2'
+    // const COLOR_YELLOW = '#DECF3F'
+    const COLOR_RED = '#F15854'
+
     let currentEvent = null
 
     const calendarParams =
@@ -78,7 +88,7 @@
           // Normal booking
         [ { url: '?action=events'
           , etype: 'booking'
-          , backgroundColor: 'red'
+          , backgroundColor: COLOR_RED
           , textColor: 'white'
           }
 
@@ -86,6 +96,10 @@
         , { googleCalendarId: GCAL_ID
           , googleCalendarApiKey: GOOGLE_API_KEY
           , etype: 'gcal'
+          , backgroundColor: COLOR_BLUE
+          , textColor: 'white'
+          }
+
           }
 
           // Fixed events
@@ -120,7 +134,8 @@
               cb(events)
             }
           , editable: false
-          , backgroundColor: 'lightgreen'
+          , backgroundColor: COLOR_GRAY
+          , textColor: 'white'
           , etype: 'fixed'
           }
         ]
@@ -399,7 +414,7 @@
 
       const source =
         { events: events
-        , backgroundColor: 'yellow'
+        , backgroundColor: COLOR_ORANGE
         , etype: 'tv1000'
         }
       $('#calendar').fullCalendar('addEventSource', source)
