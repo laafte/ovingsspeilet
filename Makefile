@@ -30,6 +30,7 @@ www/ovingsspeilet.html: ovingsspeilet.html
 		--collapse-boolean-attributes \
 		--collapse-inline-tag-whitespace \
 		--collapse-whitespace \
+		--conservative-collapse \
 		--html5 \
 		--minify-css true \
 		--remove-attribute-quotes \
