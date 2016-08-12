@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none' ; script-src 'self' 'unsafe-eval' https://cdnjs.cloudflare.com https://www.googleapis.com/calendar/; style-src 'unsafe-inline' https://cdnjs.cloudflare.com https://fonts.googleapis.com; img-src 'none' ; font-src https://fonts.gstatic.com; connect-src 'self' https://sheets.googleapis.com; form-action 'none' ; block-all-mixed-content; referrer origin-when-cross-origin;">
+
+  <title>Øvingsspeilet</title>
+
+  <style>
+    #wrapper {
+      position: fixed;
+      top: 1em;
+      bottom: 1em;
+      left: 1em;
+      right: 1em;
+    }
+  </style>
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/css/bootstrap.min.css" integrity="sha384-MIwDKRSSImVFAZCVLtU0LMDdON6KVCrZHyVQQj6e8wIEJkW4tvwqXrbMIya1vriY" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.css" integrity="sha384-YzRIoARXwFBMNzBvwtuMaoFjddDqb0KipV/TnZYoa7BNP/0ZN8D0Y8atu1BBa9AC" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.print.css" integrity="sha384-PR4PMWN2iQx3GPF/HoLAFZGpGleo5SJ/+Jx0Za3da4wkfPu3ejOtVxhJIoAEdCX8" crossorigin="anonymous" media="print">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/css/bootstrap-material-datetimepicker.min.css" integrity="sha384-GCjsFSSoXEj8JDMUHyBSrfELlO1AOhSPrA0Ua5Yrg12GixvA7TRr6cLs3hUuZaV3" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+</head>
+<body>
+
+<div id="wrapper">
+  <div id="calendar"></div>
+</div>
+
+<form id="form-modal" class="modal fade">
+  <input type="hidden" name="id" id="form-id">
+
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Lukk">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="form-modaltitle"></h4>
+      </div>
+      <div class="modal-body">
+
+        <div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-start" class="form-control-label">Fra:</label>
+                <input type="datetime" class="form-control" id="form-start" name="start" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-end" class="form-control-label">Til:</label>
+                <input type="datetime" class="form-control" id="form-end" name="end" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-contact_name" class="form-control-label">Kontakt person:</label>
+                <input type="datetime" class="form-control" id="form-contact_name" name="contact_name" required>
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <div class="form-group">
+                <label for="form-contact_phone" class="form-control-label">Telefonnummer:</label>
+                <input type="datetime" class="form-control" id="form-contact_phone" name="contact_phone" required>
+              </div>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="form-title" class="form-control-label">Tittel:</label>
+            <input type="text" class="form-control" id="form-title" name="title" required>
+          </div>
+          <div class="form-group">
+            <label for="form-details" class="form-control-label">Detaljer:</label>
+            <textarea class="form-control" id="form-details" rows="4" name="details"></textarea>
+          </div>
+        </div>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+        <button type="submit" class="btn btn-primary" id="form-submitbtn"></button>
+      </div>
+    </div>
+  </div>
+</form>
+
+<div id="view-modal" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Lukk">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="view-title"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row">
+            <div class="col-sm-6">
+              <span id="view-when"></span>
+            </div>
+            <div class="col-sm-6">
+              <span id="view-contact_name"></span>
+              (tlf. <span id="view-contact_phone"></span>)
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <span id="view-details"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+        <button type="button" class="btn btn-primary" id="view-editbtn">Rediger</button>
+        <button type="button" class="btn btn-danger" id="view-deletebtn">Slett</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="tv1000-modal" class="modal fade">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Lukk">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h4 class="modal-title" id="tv1000-header"></h4>
+      </div>
+      <div class="modal-body">
+        <div class="container-fluid">
+          <div class="row only-barvakt">
+            <div class="col-sm-6">
+              Styrevakt: <span id="tv1000-styrevakt"></span>
+            </div>
+            <div class="col-sm-6">
+              Oppmøte: 22:00
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <span id="tv1000-note"></span>
+            </div>
+          </div>
+
+          <div class="row only-vaskevakt">
+            <div class="col-sm-12">
+              <p>
+                <em>Det skal være vasket innen 12:00 hvis ikke annet er oppgitt.</em>
+              </p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-12">
+              <span id="tv1000-note"></span>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-sm-6">
+              <span id="tv1000-name1"></span>
+              (<span id="tv1000-phone1"></span>)
+            </div>
+            <div class="col-sm-6">
+              <span id="tv1000-name2"></span>
+              (<span id="tv1000-phone2"></span>)
+            </div>
+          </div>
+          <div class="row">
+            <div class="col-sm-12">
+              <span id="tv1000-note"></span>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Lukk</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.0/jquery.min.js" integrity="sha384-nrOSfDHtoPMzJHjVTdCopGqIqeYETSXhZDFyniQ8ZHcVy08QesyHcnOUpMpqnmWq" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.0.0-alpha.3/js/bootstrap.min.js" integrity="sha384-ux8v3A6CPtOTqOzMKiuo3d/DomGaaClxFYdCu2HPMBEkf6x2xiDyJ7gkXU0MWwaD" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/moment.min.js" integrity="sha384-ohw6o2vy/chIavW0iVsUoWaIPmAnF9VKjEMSusADB79PrE3CdeJhvR84BjcynjVl" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment-timezone/0.5.5/moment-timezone-with-data-2010-2020.min.js" integrity="sha384-GQfnW/2KQJhQVI+cwemLAdHuxfwz/z5cFdpQSrTRcT+sq2HLCfRF6Pho82xIES6W" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.14.1/locale/nb.js" integrity="sha384-RQ/aA4yirRpz66hJEQEmHZ6uLtwGsIdtmMEYztlU5mE2Od5yMxxIbxWVQJc9Mx/I" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/fullcalendar.min.js" integrity="sha384-9iE2/tqSNxTWrctIAIJ7GjNh1bPZ7mVFFP+/t5rS+5pagBurhjIUi037G9viN5l2" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/gcal.js" integrity="sha384-aaDeghf6oSIsEmGprIdtb50DQs3QIO1nyuN/0KbGA93jVYFEGkH8Hr/uBK8zj+Jt" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/2.9.1/lang/nb.js" integrity="sha384-2un4Eg7KOHl2WAAC5ZlVPpGckk/0SisJcOuzLlQpM9HaZM9Gn9yjxuwajI894ekD" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-material-datetimepicker/2.7.1/js/bootstrap-material-datetimepicker.min.js" integrity="sha384-vh75HzRzrjHDGfLLh6kvE6K7AUwK0LmKf5/o0r5UyH6YB/SWOwdaVdKBZoienMmC" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/twix.js/1.1.1/twix.min.js" integrity="sha384-8cmEmMLEqw/McTrpOo+5D/lmvhEV6Q2fv7u0yaYvaQcT+FaUUd5QVpFWlnx1nwKz" crossorigin="anonymous"></script>
+
+<script src="ovingsspeilet.js"></script>
+</body>
+</html>
