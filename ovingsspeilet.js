@@ -150,7 +150,6 @@
             break
 
           case 'booking':
-            if (!('contact_phone' in event)) return
             currentEvent = event
             $('#view-when').text(event.start.twix(event.end).format())
             $('#view-contact_name').text(event.contact_name)
@@ -281,7 +280,10 @@
               savedEvent.id = id
               savedEvent.backgroundColor = 'red'
               savedEvent.textColor = 'white'
-              const source = { events: [ savedEvent ] }
+              const source =
+                { events: [ savedEvent ]
+                , etype: 'booking'
+                }
               $('#calendar').fullCalendar('addEventSource', source)
             }
 
