@@ -378,7 +378,7 @@
           title = 'Klubbaften'
           break
         case 6:
-          title = 'Samfundsmøte'
+          title = 'Lørdagskveld'
           break
         default:
           title = 'Barvakt'
@@ -388,7 +388,7 @@
         events.push(
           { start: bdate.clone().hour(BARVAKT_EVENT_START).toDate()
           , end: bdate.clone().add(1, 'day').hour(BARVAKT_EVENT_END).toDate()
-          , title: title + ' - Oppmøte 22:00'
+          , title: title + ' - Barvakt oppmøte 22:00'
           , header: title + ' ' + bdate.format('LL')
           , styrevakt: row[TV1000_COLUMN_BAR_STYREVAKT]
           , styrevaktTlf:
