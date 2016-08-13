@@ -185,6 +185,7 @@
           case 'tv1000':
             $('#tv1000-header').text(event.header || '')
             $('#tv1000-styrevakt').text(event.styrevakt || '')
+            $('#tv1000-styrevakt-tlf').text(event.styrevaktTlf || '')
             $('#tv1000-name1').text(event.name1 || '')
             $('#tv1000-phone1').text(event.phone1 || '')
             $('#tv1000-name2').text(event.name2 || '')
@@ -351,6 +352,7 @@
     const TV1000_COLUMN_BAR_NAME_2 = 5
     const TV1000_COLUMN_BAR_PHONE_2 = 6
     const TV1000_COLUMN_BAR_NOTE = 7
+    const TV1000_COLUMN_BAR_STYREVAKT_TLF = 8
     const TV1000_COLUMN_WASH_DATE = 9
     const TV1000_COLUMN_WASH_GROUP = 10
     const TV1000_COLUMN_WASH_NAME_1 = 11
@@ -389,6 +391,9 @@
           , title: title + ' - Oppmøte 22:00'
           , header: title + ' ' + bdate.format('LL')
           , styrevakt: row[TV1000_COLUMN_BAR_STYREVAKT]
+          , styrevaktTlf:
+              row[TV1000_COLUMN_BAR_STYREVAKT_TLF]
+              .replace(/[^0-9]/g, '')
           , group: row[TV1000_COLUMN_BAR_GROUP]
           , name1: row[TV1000_COLUMN_BAR_NAME_1]
           , phone1: row[TV1000_COLUMN_BAR_PHONE_1]
