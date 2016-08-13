@@ -64,9 +64,6 @@ case 'POST delete':
   break;
 
 case 'POST save':
-  if ($_SERVER['REQUEST_METHOD'] !== 'POST')
-    exit();
-
   header('Content-Type: text/plain; charset="utf-8"');
 
   $values =
