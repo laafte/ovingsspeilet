@@ -17,7 +17,7 @@ function db() {
   return $dbh;
 }
 
-switch ($_SERVER['REQUEST_METHOD'] . ' ' . $_GET['action']) {
+switch ($_SERVER['REQUEST_METHOD'] . ' ' . @$_GET['action']) {
 default:
   header('Content-Type: text/html; charset="utf-8"');
   readfile('ovingsspeilet.html');
