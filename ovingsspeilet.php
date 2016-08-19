@@ -9,6 +9,8 @@ function db() {
   if (!$dbh) {
     try {
       $dbh = new PDO(DB_DSN, DB_USER, DB_PASS);
+      if (substr(DB_DSN, 0, 6) === 'mysql:')
+        $dbh->query('SET GLOBAL SQL_MODE=ANSI_QUOTES');
     } catch (PDOException $err) {
       echo 'DB connection failed: ' . $err->getMessage();
       exit();
@@ -30,7 +32,7 @@ case 'GET events':
     [ date('Y-m-d H:i:s', strtotime($_GET['start']))
     , date('Y-m-d H:i:s', strtotime($_GET['end']))
     ];
-  $sql = 'SELECT * FROM `ovingsspeilet` WHERE `start` >= ? AND `end` <= ?';
+  $sql = 'SELECT * FROM "ovingsspeilet" WHERE "start" >= ? AND "end" <= ?';
   $sth = db()->prepare($sql);
   $sth->execute($values);
 
@@ -59,7 +61,7 @@ case 'GET events':
 
 case 'POST delete':
   header('Content-Type: text/plain; charset="utf-8"');
-  $sql = 'DELETE FROM `ovingsspeilet` WHERE `id` = ?';
+  $sql = 'DELETE FROM "ovingsspeilet" WHERE "id" = ?';
   $sth = db()->prepare($sql);
   echo $sth->execute([ (int) $_POST['id'] ]);
   break;
@@ -78,25 +80,31 @@ case 'POST save':
 
   $id = (int) $_POST['id'];
 
-  $sql = '';
   if ($id) {
-    $sql .= 'UPDATE';
-  } else {
-    $sql .= 'INSERT INTO';
-  }
-  $sql .= '
-     `ovingsspeilet`
-    SET
-      `start` = ?,
-      `end` = ?,
-      `contact_name` = ?,
-      `contact_phone` = ?,
-      `title` = ?,
-      `details` = ?
+    $sql = '
+      UPDATE "ovingsspeilet"
+      SET "start" = ?
+        , "end" = ?
+        , "contact_name" = ?
+        , "contact_phone" = ?
+        , "title" = ?
+        , "details" = ?
+      WHERE "id" = ?
       ';
-  if ($id) {
-    $sql .= 'WHERE `id` = ?';
     $values[] = $id;
+  } else {
+    $sql = '
+      INSERT INTO "ovingsspeilet"
+      ( "start"
+      , "end"
+      , "contact_name"
+      , "contact_phone"
+      , "title"
+      , "details"
+      )
+      VALUES
+      (?, ?, ?, ?, ?, ?)
+      ';
   }
 
   $sth = db()->prepare($sql);
