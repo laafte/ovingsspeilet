@@ -47,3 +47,10 @@ www/ovingsspeilet.html: ovingsspeilet.html
 .PHONY: server
 server: build
 	php -S 0.0.0.0:1337 -t www
+
+
+.PHONY: publish
+publish: build
+	scp \
+		{www/index.php,www/ovingsspeilet.html,www/ovingsspeilet.js} \
+		cirkus.samfundet.no:/var/www/samfundet.no/laafte/ovingsspeilet/ \
