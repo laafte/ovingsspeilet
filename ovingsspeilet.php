@@ -34,6 +34,7 @@ case 'GET events':
   $sth = db()->prepare($sql);
   $sth->execute($values);
 
+  echo '[';
   $first = true;
   while ($row = $sth->fetchObject()) {
     $json =
@@ -47,7 +48,7 @@ case 'GET events':
       ];
     if ($first) {
       $first = false;
-      echo "[ ";
+      echo " ";
     } else {
       echo "\n, ";
     }
