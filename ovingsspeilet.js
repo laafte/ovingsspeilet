@@ -69,15 +69,16 @@
     const BARVAKT_EVENT_START = 21 // 21 o'clock
     const BARVAKT_EVENT_END = 9 // 9 o'clock (next day)
 
-    const COLOR_GRAY = '#4D4D4D'
-    const COLOR_BLUE = '#5DA5DA'
-    const COLOR_ORANGE = '#FAA43A'
-    const COLOR_GREEN = '#60BD68'
-    // const COLOR_PINK = '#F17CB0'
-    // const COLOR_BROWN = '#B2912F'
-    // const COLOR_PURPLE = '#B276B2'
-    // const COLOR_YELLOW = '#DECF3F'
-    const COLOR_RED = '#F15854'
+    const COLOR_BG_BOOKING = '#FAA43A'
+    const COLOR_TEXT_BOOKING = 'white'
+    const COLOR_BG_SAMF_INTERNAL = '#eee'
+    const COLOR_TEXT_SAMF_INTERNAL = '#888'
+    const COLOR_BG_LAAFTE_INTERNAL = '#eee'
+    const COLOR_TEXT_LAAFTE_INTERNAL = '#888'
+    const COLOR_BG_FIXED = '#44bb99'
+    const COLOR_TEXT_FIXED = 'white'
+    const COLOR_BG_TV1000 = '#5DA5DA'
+    const COLOR_TEXT_TV1000 = 'white'
 
     let currentEvent = null
 
@@ -87,8 +88,8 @@
           // Normal booking
         [ { url: '?action=events'
           , etype: 'booking'
-          , backgroundColor: COLOR_RED
-          , textColor: 'white'
+          , backgroundColor: COLOR_BG_BOOKING
+          , textColor: COLOR_TEXT_BOOKING
           }
 
           // Interne datoer, Studentersamfundet i Trondhjem
@@ -96,16 +97,16 @@
             'ga4v5nj5d16i78ommnp3tll8l0@group.calendar.google.com'
           , googleCalendarApiKey: GOOGLE_API_KEY
           , etype: 'gcal'
-          , backgroundColor: COLOR_BLUE
-          , textColor: 'white'
+          , backgroundColor: COLOR_BG_SAMF_INTERNAL
+          , textColor: COLOR_TEXT_SAMF_INTERNAL
           }
 
           // Musikerlåfte kalender
         , { googleCalendarId: 'musikerlaafte@gmail.com'
           , googleCalendarApiKey: GOOGLE_API_KEY
           , etype: 'gcal'
-          , backgroundColor: COLOR_GREEN
-          , textColor: 'white'
+          , backgroundColor: COLOR_BG_LAAFTE_INTERNAL
+          , textColor: COLOR_TEXT_LAAFTE_INTERNAL
           }
 
           // Fixed events
@@ -140,8 +141,8 @@
               cb(events)
             }
           , editable: false
-          , backgroundColor: COLOR_GRAY
-          , textColor: 'white'
+          , backgroundColor: COLOR_BG_FIXED
+          , textColor: COLOR_TEXT_FIXED
           , etype: 'fixed'
           }
         ]
@@ -300,8 +301,8 @@
               $('#calendar').fullCalendar('updateEvent', savedEvent)
             } else {
               savedEvent.id = id
-              savedEvent.backgroundColor = 'red'
-              savedEvent.textColor = 'white'
+              savedEvent.backgroundColor = COLOR_BG_BOOKING
+              savedEvent.textColor = COLOR_TEXT_BOOKING
               const source =
                 { events: [ savedEvent ]
                 , etype: 'booking'
@@ -425,7 +426,8 @@
 
       const source =
         { events: events
-        , backgroundColor: COLOR_ORANGE
+        , backgroundColor: COLOR_BG_TV1000
+        , textColor: COLOR_TEXT_TV1000
         , etype: 'tv1000'
         }
       $('#calendar').fullCalendar('addEventSource', source)
