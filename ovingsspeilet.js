@@ -42,15 +42,15 @@
     const GOOGLE_API_KEY = 'AIzaSyDvx6ilj_CXqxxtFSOGeUxAJso5hlRfa0s'
     const TV1000_ID = '1Byw2CTdG-gnRI-V_QCYGlB4VpMDABsHH67im8GHS_AA'
     const FIXED =
-      [ { start: 2580 // 1 * DAY + 19 * HOUR
+      [ { start: 2550 // 1 * DAY + 18 * HOUR + 30 MIN
         , end: 2760   // 1 * DAY + 22 * HOUR
         , title: 'S. Møller'
         }
-      , { start: 4020 // 2 * DAY + 19 * HOUR
+      , { start: 3990 // 2 * DAY + 18 * HOUR + 30 MIN
         , end: 4200   // 2 * DAY + 22 * HOUR
         , title: 'Leisure Suit Lovers'
         }
-      , { start: 5460 // 3 * DAY + 19 * HOUR
+      , { start: 5430 // 3 * DAY + 18 * HOUR + 30 MIN
         , end: 5640   // 3 * DAY + 22 * HOUR
         , title: 'Kjellerbandet'
         }
