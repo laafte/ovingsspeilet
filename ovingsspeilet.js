@@ -153,7 +153,7 @@
         , right: 'month,agendaWeek,agendaDay'
         }
       , weekNumbers: true
-      , allDaySlot: false
+      , allDaySlot: true
       , scrollTime: '12:00:00'
       , height: 'parent'
       , customButtons:
