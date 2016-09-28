@@ -110,7 +110,7 @@ case 'POST save':
   $sth = db()->prepare($sql);
   if ($sth->execute($values)) {
     if (!$id) {
-      $id = db()->lastInsertId();
+      $id = db()->lastInsertId('ovingsspeilet_id_seq');
     }
     echo $id;
   }
