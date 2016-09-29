@@ -160,6 +160,7 @@
       , nextDayThreshold: '12:00:00'
       , fixedWeekCount: false
       , lazyFetching: false
+      , navLinks: true
       , customButtons:
         { create:
           { text: 'Ny øvelse'
