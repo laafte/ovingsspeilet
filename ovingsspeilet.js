@@ -161,6 +161,7 @@
       , fixedWeekCount: false
       , lazyFetching: false
       , navLinks: true
+      , displayEventEnd: true
       , customButtons:
         { create:
           { text: 'Ny øvelse'
