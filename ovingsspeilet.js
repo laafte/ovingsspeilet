@@ -154,6 +154,7 @@
         }
       , weekNumbers: true
       , allDaySlot: true
+      , allDayText: ''
       , scrollTime: '12:00:00'
       , height: 'parent'
       , nextDayThreshold: '12:00:00'
