@@ -150,7 +150,7 @@
       , header:
         { left: 'create prev,next today'
         , center: 'title'
-        , right: 'month,agendaWeek,agendaDay'
+        , right: 'month,agendaWeek,agendaDay,listWeek'
         }
       , weekNumbers: true
       , allDaySlot: true
