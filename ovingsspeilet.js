@@ -58,6 +58,10 @@
         , end: 7080   // 4 * DAY + 22 * HOUR
         , title: 'Snaustrinda Spelemanslag'
         }
+      , { start: 2460 // 1 * DAY + 17 * HOUR
+        , end: 2550   // 1 * DAY + 18 * HOUR + 30 MIN
+        , title: 'Orkesterstyremøte'
+        }
       ]
 
     const $ = win.jQuery
