@@ -120,11 +120,11 @@
                 .tz('Europe/Oslo')
                 .startOf('day')
                 .subtract(pstart.day(), 'days')
-              const startofweekdst = startofweek.isDST()
+              const startofweekdst = false // startofweek.isDST()      // Temporary workaround since .isDST() seems to be broken as of summer 2021 - https://github.com/moment/moment/issues/5852 
               const events = []
               FIXED.forEach((row) => {
                 const start = startofweek.clone().add(row.start, 'minutes')
-                if (start.isDST() !== startofweekdst) {
+                if (true) { //(start.isDST() !== startofweekdst) {     // same as above, both should probably be reversed when we move out of DST (or when issue is fixed)
                   if (startofweekdst) start.add(1, 'hour')
                   else start.subtract(1, 'hour')
                 }
