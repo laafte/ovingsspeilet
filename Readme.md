@@ -2,6 +2,8 @@
 
 Dette er versjon 2 av øvingsspeilet til internt bruk for Studentersamfundets Orkesters medlemmer.
 
+> [!NOTE]
+> Du ser nå på Github-prosjektet som vi i Låfteweb bruker til å utvikle Øvingsspeilet. Selve nettsiden finner du [her](https://laafte.samfundet.no/ovingsspeilet/). 
 
 ## Setup
 
