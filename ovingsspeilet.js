@@ -58,6 +58,10 @@
         , end: 7080   // 4 * DAY + 22 * HOUR
         , title: 'Snaustrinda Spelemanslag'
         }
+      , { start: 6690 // 4 * DAY + 15 * HOUR + 30 MIN
+        , end: 6810 // 4 * DAY + 17 * HOUR + 30 MIN
+        , title: 'Blågressbanden'
+        }
       , { start: 2430 // 1 * DAY + 16 * HOUR + 30 MIN
         , end: 2520   // 1 * DAY + 18 * HOUR
         , title: 'Orkesterstyremøte'
