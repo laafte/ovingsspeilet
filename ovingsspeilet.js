@@ -42,7 +42,7 @@
     const GOOGLE_API_KEY = 'AIzaSyDvx6ilj_CXqxxtFSOGeUxAJso5hlRfa0s'
     const TV1000_ID = '1Byw2CTdG-gnRI-V_QCYGlB4VpMDABsHH67im8GHS_AA'
     const FIXED =
-      [ { start: 2550 // 1 * DAY + 18 * HOUR + 30 MIN
+      [ { start: 2520 // 1 * DAY + 18 * HOUR
         , end: 2760   // 1 * DAY + 22 * HOUR
         , title: 'S. Møller'
         }
@@ -54,12 +54,16 @@
         , end: 5640   // 3 * DAY + 22 * HOUR
         , title: 'Kjellerbandet'
         }
-      , { start: 6840 // 4 * DAY + 18 * HOUR
+      , { start: 6810 // 4 * DAY + 17 * HOUR + 30 MIN
         , end: 7080   // 4 * DAY + 22 * HOUR
         , title: 'Snaustrinda Spelemanslag'
         }
-      , { start: 2460 // 1 * DAY + 17 * HOUR
-        , end: 2550   // 1 * DAY + 18 * HOUR + 30 MIN
+      , { start: 6690 // 4 * DAY + 15 * HOUR + 30 MIN
+        , end: 6810 // 4 * DAY + 17 * HOUR + 30 MIN
+        , title: 'Blågressbanden'
+        }
+      , { start: 2430 // 1 * DAY + 16 * HOUR + 30 MIN
+        , end: 2520   // 1 * DAY + 18 * HOUR
         , title: 'Orkesterstyremøte'
         }
       ]
